@@ -30,9 +30,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="345bbe" />
-                            <entry key="opacityPercent" value="92" />
-                            <entry key="outputName" value="ic_icon_green" />
-                            <entry key="sourceFile" value="C:\Users\Samfield\Downloads\icon1.svg" />
+                            <entry key="outputName" value="ic_edit_blue" />
+                            <entry key="sourceFile" value="C:\Users\Samfield\Downloads\edit (1).svg" />
                           </map>
                         </option>
                       </PersistentState>
