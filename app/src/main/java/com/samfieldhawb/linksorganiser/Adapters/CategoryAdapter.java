@@ -2,13 +2,16 @@ package com.samfieldhawb.linksorganiser.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.samfieldhawb.linksorganiser.Models.Category;
 import com.samfieldhawb.linksorganiser.R;
@@ -44,8 +47,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Category category = mCategories.get(i);
             CategoryHolder categoryHolder = (CategoryHolder) viewHolder;
             categoryHolder.mName.setText(category.getName());
-        }else {
-
         }
 
     }
@@ -59,9 +60,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemViewType(int position) {
         return position == mCategories.size()-1 ? 0 : 1;
     }
+    class CategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    class CategoryHolder extends RecyclerView.ViewHolder {
-         
         CardView mCard;
         ImageView mIcon;
         TextView mName;
@@ -70,6 +70,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             mCard = itemView.findViewById(R.id.cat_card);
             mIcon = itemView.findViewById(R.id.cat_icon);
             mName = itemView.findViewById(R.id.cat_name);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(mContext,mCategories.get(getAdapterPosition()).getName(),Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -78,6 +84,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public AddCategoryHolder(@NonNull View itemView) {
             super(itemView);
             mAdd = itemView.findViewById(R.id.add_card);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext,"Add",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
